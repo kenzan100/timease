@@ -21,11 +21,10 @@ module TimeEase::Adapter
 
     def request_bodies
       @parsed.map do |entry|
-        range = entry.time_range
         {
           time_entry: {
-            date_at:    range.first.strftime("%Y-%m-%d"),
-            minutes:    ((range.last - range.first) / 60.0).to_i,
+            date_at:    entry.start_at.strftime("%Y-%m-%d"),
+            minutes:    ((entry.end_at - entry.start_at) / 60.0).to_i,
             project_id: project_id(entry),
             service_id: service_id(entry),
             note: "#{entry.pj_name} #{entry.task_name}".strip

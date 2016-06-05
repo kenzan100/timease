@@ -3,7 +3,7 @@ require "ostruct"
 
 module TimeEase
   Input  = Struct.new(:start_time, :end_time, :date, :dones)
-  Output = Struct.new(:time_range, :exact, :pj_name, :task_name)
+  Output = Struct.new(:start_at, :end_at, :exact, :pj_name, :task_name)
 
   class Parser
     def initialize(input)
@@ -34,7 +34,8 @@ module TimeEase
       dur = t.time_in_hour * 3600
       this_start_at = start_at + diff
       output = Output.new(
-        this_start_at..(this_start_at + dur),
+        this_start_at,
+        (this_start_at + dur),
         false,
         t.pj,
         t.task
