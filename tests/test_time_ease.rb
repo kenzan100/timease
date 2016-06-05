@@ -9,8 +9,15 @@ class TestTimeEase < Minitest::Test
   end
 
   def test_post
-    parsed = @parser.parse
-    TimeEase::Adapter::Mite.new(parsed).post
+    # parsed = @parser.parse
+    # TimeEase::Adapter::Mite.new(parsed).post
+  end
+
+  def test_revparse
+    parsed_entries = @parser.parse
+    input_entries = TimeEase::RevParser.new(parsed_entries).parse
+    byebug
+    input_entries
   end
 
   def test_parse

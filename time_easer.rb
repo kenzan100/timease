@@ -5,6 +5,36 @@ module TimeEase
   Input  = Struct.new(:start_time, :end_time, :date, :dones)
   Output = Struct.new(:start_at, :end_at, :exact, :pj_name, :task_name)
 
+  class RevParser
+    attr_reader :parsed_entries
+
+    def initialize(parsed_outputs)
+      @parsed_entries = parsed_outputs
+    end
+
+    def parse
+      parsed_entries.group_by { |e| e.start_at.to_date }.map { |date, entries|
+        start_time = l_time(entries.min_by { |e| e.start_at }.start_at)
+        end_time   = l_time(entries.max_by { |e| e.end_at }.end_at)
+        dones = entries.sort_by { |e| e.start_at }.map { |e|
+          dur = (e.end_at - e.start_at) / 3600
+          "#{e.pj_name} #{e.task_name}(#{dur})"
+        }
+        Input.new(start_time, end_time, l_date(date), dones)
+      }
+    end
+
+    private
+
+    def l_time(time)
+      time.strftime("%H:%M")
+    end
+
+    def l_date(time)
+      time.strftime("%Y-%m-%d")
+    end
+  end
+
   class Parser
     def initialize(input)
       @input = input
