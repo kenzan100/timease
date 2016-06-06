@@ -1,0 +1,21 @@
+projects:
+  -
+    id: 234
+    slug: record_sale
+    names:
+      - RecordSale
+      - Record Sale
+      - RS
+  -
+    id: 123
+    slug: good_travel
+    names:
+      - Good Travel
+      - GoodTravel
+
+services:
+  -
+    id: 1
+    slug: sprint_6
+    names:
+      - Sprint6
