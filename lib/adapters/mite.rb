@@ -1,4 +1,3 @@
-require "byebug"
 require "yaml"
 require "json"
 require "rest-client"

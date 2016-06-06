@@ -1,8 +1,6 @@
-require_relative "../time_easer"
-require_relative "../adapters/mite"
-require "minitest/autorun"
+require "test_helper"
 
-class TestTimeEase < Minitest::Test
+class TimeEaseTest < Minitest::Test
   def setup
     input   = TimeEase::Input.new("10:00", "16:00", "12-25-2016", "RS Sprint6, GoodTravel(1.5)")
     @parser = TimeEase::Parser.new(input)
