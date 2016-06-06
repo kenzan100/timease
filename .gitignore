@@ -8,5 +8,5 @@
 /spec/reports/
 /tmp/
 data/mite_mapping.yml
-log
+/log/
 tmp
