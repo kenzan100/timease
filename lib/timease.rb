@@ -1,3 +1,5 @@
+require "timease/version"
+require "adapters/mite"
 require "chronic"
 require "ostruct"
 
