@@ -1,3 +1,4 @@
+require "timease/version"
 require "chronic"
 require "ostruct"
 
