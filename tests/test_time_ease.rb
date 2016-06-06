@@ -16,8 +16,9 @@ class TestTimeEase < Minitest::Test
   def test_revparse
     parsed_entries = @parser.parse
     input_entries = TimeEase::RevParser.new(parsed_entries).parse
-    byebug
-    input_entries
+    expected = { start_time: "10:00", end_time: "16:00", date: "2016-12-25", dones: ["RS Sprint6(4.5)", "GoodTravel (1.5)"] }
+    assert_equal 1, input_entries.size
+    assert_equal expected, input_entries.first.to_h
   end
 
   def test_parse
