@@ -4,7 +4,11 @@ require "chronic"
 require "ostruct"
 
 module TimeEase
-  Input  = Struct.new(:start_time, :end_time, :date, :dones)
+  Input  = Struct.new(:start_time, :end_time, :date, :dones) do
+    def valid?
+      [start_time, end_time, date, dones].none?{ |a| a.nil? || a.empty? }
+    end
+  end
   Output = Struct.new(:start_at, :end_at, :exact, :pj_name, :task_name)
 
   class RevParser
