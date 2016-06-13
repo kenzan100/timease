@@ -24,7 +24,7 @@ module TimeEase
         end_time   = l_time(entries.max_by { |e| e.end_at }.end_at)
         dones = entries.sort_by { |e| e.start_at }.map { |e|
           dur = (e.end_at - e.start_at) / 3600
-          "#{e.pj_name} #{e.task_name}(#{dur})"
+          "#{e.pj_name} #{e.task_name}(#{dur.round(2)})"
         }
         Input.new(start_time, end_time, l_date(date), dones)
       }
